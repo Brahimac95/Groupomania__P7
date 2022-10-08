@@ -12,7 +12,7 @@ export default function MyPost() {
 
   useEffect(() => {
 
-    axios.get('http://localhost:5000/api/post', {
+    axios.get('http://localhost:5000/api/post', {//On recupère tout les posts en ajoutant le token du l'utilisateur dans le header
       headers: {
         'Authorization': `Bearer ${userData.token}`
       }
@@ -31,24 +31,12 @@ export default function MyPost() {
   let userPost = posts.filter(post => {
     return post.userId === userId
   })
-   
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
   return (
-
+    
+    //On regarde si l'utilisateur a publié des posts on les affichent sinon on affiche un message pour proposer au user de poster quelque chose 
     userPost.length > 0 ?
     <div>
       <div className="loadingbg">
@@ -56,8 +44,10 @@ export default function MyPost() {
       </div>
       <HeaderNav/>
         {/* <h1>MyPost</h1> */}
+        
+        {/* On affiche les publication de la plus ressente a plus ancienne  */}
         <main style={{padding: "50px 0 150px 0"}}>
-        {userPost.slice().reverse().map((post) => (<CardPost key={post._id} post={post}/>))}
+        {userPost.slice().reverse().map((post) => (<CardPost key={post._id} post={post}/>))} 
         </main>
     </div>
     :
@@ -66,11 +56,11 @@ export default function MyPost() {
         <div className="loader"></div>
       </div>
       <HeaderNav/>
-        <div className="div">
-          <div className="mypost-div">
-            <h2 className="mypost-text">Sniff vous n'avez rien poster 😥, Créez une première publication pour vous présenter à vos collègues 🙂</h2>
-          </div>
+      <div className="div">
+        <div className="mypost-div">
+          <h2 className="mypost-text">Sniff vous n'avez rien poster 😥, Créez une première publication pour vous présenter à vos collègues 🙂</h2>
         </div>
+      </div>
     </>
   )
 }

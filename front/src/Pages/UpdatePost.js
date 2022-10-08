@@ -48,6 +48,7 @@ export default function UpdatePost() {
 
   }, [userDataLs.token, userId]);
 
+  //On cible que le post grâce à son identifiant
   useEffect(() => {
     axios({
       method: 'get',
@@ -80,14 +81,12 @@ export default function UpdatePost() {
     formData.append('file', imgPostFile);
     formData.append('isAdmin', dataUser.isAdmin);
     
-
-
-    
+    //On envoies les données en formData en Back
     axios.put(`http://localhost:5000/api/post/${postData._id}`, formData, 
 
     {headers: {'Authorization': `Bearer ${userDataLs.token}`},
     data: {
-      isAdmin
+      isAdmin //On met le isAdmin dans le header pour que le compte administateur ai les mêmes posibilités que le créateur du post
     }
   
     })
@@ -110,7 +109,7 @@ export default function UpdatePost() {
 
   }
 
-  //Fonction de lecteure des input file
+  //Fonction de lecture des input file
   function handleImg (e) {
     e.preventDefault()
     setPostImgInput(e.target.value)
@@ -145,12 +144,6 @@ export default function UpdatePost() {
 
 
   }
-
-
-
-
-
-
 
 
 

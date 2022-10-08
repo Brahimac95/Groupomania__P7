@@ -9,7 +9,8 @@ export default function Home() {
 
   let user = JSON.parse(localStorage.getItem("dataUser"));
   return (
-
+    
+    //On vérifie avec la fonction ternaire si les données et surtout le Token est encore dans le localStorage
     user?
 
     <div>
@@ -18,13 +19,10 @@ export default function Home() {
         <div className="loadingbg">
           <div className="loader"></div>
         </div>
-
-        <h1 style={{textAlign: 'center', marginTop: '20px', fontSize: '22px'}}>Bienvenue {" "} {user.firstName}</h1>
-        {/* <CreatePost/> */}
+        <h1 style={{textAlign: 'center', marginTop: '20px', fontSize: '22px'}}>Bienvenue{" "}{user.firstName}</h1>
         <PostList/>
-
       </div>
     </div>
-      : <Navigate to="/login" replace={true}/>
+    : <Navigate to="/login" replace={true}/>
   )
 }

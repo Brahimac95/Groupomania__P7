@@ -14,7 +14,6 @@ export default function Login() {
 
 
   function handleClick (e) {
-
     handleSubmit(e)
 
   }
@@ -51,40 +50,39 @@ export default function Login() {
   }
 
 
-
   return (
-    <div>
-        <HeaderAuth/>
-      <main className='card-form'>
+    <>
 
-      <form className="login-form">
-        <h3>Se connecter</h3>
-        <label htmlFor="email">Email</label>
-        <input type="text" name="email" id="email" 
-          onChange={(e) => setEmail(e.target.value)} required value={email}
-          placeholder='jean@gmail.com'
-        />
-        <div className="emailError"></div>
-        <br />
-        <label htmlFor="password">Mot de passe</label>
+      <HeaderAuth/>
+      <main className='card-form'>
+        <form className="login-form">
+          <h3>Se connecter</h3>
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" id="email" 
+            onChange={(e) => setEmail(e.target.value)} required value={email}
+            placeholder='jean@gmail.com'
+          />
+          <div className="emailError"></div>
+          <br />
+          <label htmlFor="password">Mot de passe</label>
         
-        <input
-          type="password"
-          name="passwor"
-          id="password"
-          onChange={(e) => setPassword(e.target.value)} required
-          value={password}
-        />
-        <div className="password error"></div>
-        <br />
-        <span>{error && "Le mail ou le mot de passe incorrecte"}</span>
-        <br />
-        <button onClick={handleClick} value="Se connecter">Connexion</button>
-        <NavLink to="/signup">
-        <h3 id='s_inscrire'>S'inscrire</h3>
-        </NavLink>
-      </form>
-    </main>
-    </div>
+          <input
+            type="password"
+            name="passwor"
+            id="password"
+            onChange={(e) => setPassword(e.target.value)} required
+            value={password}
+          />
+          <div className="password error"></div>
+          <br />
+          <span>{error && "Le mail ou le mot de passe incorrecte"}</span>
+          <br />
+          <button onClick={handleClick} value="Se connecter">Connexion</button>
+          <NavLink to="/signup">
+            <h3 id='s_inscrire'>S'inscrire</h3>
+          </NavLink>
+        </form>
+      </main>
+    </>
   )
 }
