@@ -1,0 +1,23 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato' ,sans-serif;
+
+}
+body {
+  
+  background: #4e5166;
+  /* color: white; */
+}
+input{
+  outline-style: none;
+}
+ul li{
+  list-style: none;
+
+}
+a {
+  text-decoration: none;
+  color: inherit ;
+}

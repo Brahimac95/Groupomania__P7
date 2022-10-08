@@ -1,0 +1,115 @@
+.container-reate-post {
+    // text-align: center;
+    display: flex;
+    justify-content: center;
+    color: #f2f2f2;
+    
+    .create-post{
+      box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
+      position: relative;
+      background: #e6e2e2;
+      padding: 40px 20px ;
+      margin-top: 25px;
+      width: 35%;
+      border-radius: 20px;
+      color: black;
+
+      .post-redaction {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+      textarea {
+      // color: white;
+        font-size: 15px;
+        width: 100%;
+        margin-top: -48px;
+        margin-bottom: 12px;
+        padding: 50px;
+        background: transparent;
+        border: none;
+        text-align: center;
+        resize: none;
+        // margin: -20px -40px
+        &:focus{
+          outline: none;
+        }
+      }
+        
+    }
+
+    // .post-footer{
+    //     position: absolute;
+    //     top: 80%;
+    //     left: 16%;
+        
+    // }
+
+    .create-post-btn {
+        font-size: 14px;
+        font-weight: bold;
+        background: #ff7b77;
+        border-style: none;
+        padding: 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        &:hover{
+            // transform: translateX(3px);
+            transform: scale(1.03);
+        }
+    }
+
+    
+    
+}
+
+@media screen and (max-width: 1250px) {
+  .post-footer button {
+    margin-top: 8px;
+  }
+  
+}
+@media  screen and (max-width: 900px) {
+  .container-reate-post  {
+      .create-post {
+        background: #000;
+        width: auto;
+        color: white;
+      }
+    }
+  }
+  
+  @media  screen and (max-width: 588px){
+    form{
+      position: relative;
+      
+      
+      .create-post {
+        color: bisque;
+
+      }
+      
+
+    }
+
+  }
+
+
+
+ 
+  // @media only screen and (max-width: 435px) {
+  
+  // .create-post-button {
+  //   margin-right: 6px;
+  // }
+  // textarea{
+    
+  // }
+  
+  
+  //   .create-post-footer-text {
+  //     font-size: 12px;
+  //   }
+  
+  // }

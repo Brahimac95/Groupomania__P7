@@ -1,0 +1,76 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import HeaderNav from '../Components/HeaderNav';
+import CardPost from '../Components/CardPost';
+import '../Styles/Pages/_myPost.scss';
+import'../Styles/Pages/_home.scss'
+
+export default function MyPost() {
+  const userData = JSON.parse(localStorage.getItem("dataUser"))
+  const userId = userData.userId;
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+
+    axios.get('http://localhost:5000/api/post', {
+      headers: {
+        'Authorization': `Bearer ${userData.token}`
+      }
+
+    })
+    //On recuper tout les posts
+    .then((res) => {
+      console.log(res)
+      setPosts(res.data)
+
+    })
+
+  }, [userData.token])
+
+  //On cible les posts mais on affiche uniquement les post de l'utilisateur en question
+  let userPost = posts.filter(post => {
+    return post.userId === userId
+  })
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return (
+
+    userPost.length > 0 ?
+    <div>
+      <div className="loadingbg">
+        <div className="loader"></div>
+      </div>
+      <HeaderNav/>
+        {/* <h1>MyPost</h1> */}
+        <main style={{padding: "50px 0 150px 0"}}>
+        {userPost.slice().reverse().map((post) => (<CardPost key={post._id} post={post}/>))}
+        </main>
+    </div>
+    :
+    <>
+      <div className="loadingbg">
+        <div className="loader"></div>
+      </div>
+      <HeaderNav/>
+        <div className="div">
+          <div className="mypost-div">
+            <h2 className="mypost-text">Sniff vous n'avez rien poster 😥, Créez une première publication pour vous présenter à vos collègues 🙂</h2>
+          </div>
+        </div>
+    </>
+  )
+}

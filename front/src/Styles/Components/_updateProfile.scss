@@ -1,0 +1,100 @@
+.updateProfil{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    h3{
+      text-transform: uppercase;
+    }
+    
+
+    .card{
+      position: relative;
+      background: #fff;
+      width: 310px;
+      height: 400px;
+      padding: 5px;
+      box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      // background-size: 40%, 80%;
+      button{
+        border-style: none;
+        border-radius: 5px;
+        position: absolute;
+        margin-top: 3px;
+        right: 16px;
+        bottom: 26px;
+        background: #ff7b77;
+        font-weight: bold;
+        padding: 5px;
+        cursor: pointer;
+        &:hover{
+        transform: scale(1.06);
+        
+    }
+      }
+    
+    }
+    .img-wrap{
+        position: relative;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-bottom: 25px;
+    }
+    img {
+      width: auto;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    textarea{
+      width: 200px;
+      height: 90px;
+      // text-align: center;
+      margin: 40px;
+      padding: 20px 20px;
+      resize: none;
+      border-radius: 15px;
+      font-size: 14px;
+      font-weight: bold;
+
+      &:focus{
+        outline: none;
+      }
+    }
+
+    input[type="file"] {
+        cursor: pointer;
+        padding: 20px;
+        margin: 40px 0;
+
+        // @media screen and(max-width: 1121px) {
+        //   opacity: 0;
+        // }
+      }
+
+      label {
+        text-align: center;
+        position: absolute;
+        
+        bottom: 60px;
+        right: 168px;
+        width: 135px;
+        font-weight: bold;
+        background: #ff7b77;
+        border-radius: 20px;
+        padding: 10px 0;
+        transition: 0.2s;
+        z-index: 10;
+        cursor: pointer;
+      }
+}
