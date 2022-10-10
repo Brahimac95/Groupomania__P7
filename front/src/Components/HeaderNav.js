@@ -72,9 +72,9 @@ export default function Header() {
 
             <div className='banner-container'>
                 <img src={Logo} alt="Logo Groupomania" className='logo' />
-                <h3 >Faites connaissance avec vos collègues</h3>
+                <h3 >Apprenez à faire connaissance avec vos collègues</h3>
                 <nav className='btn-link'>
-                    <ul className='icon-link'>
+                    <ul className='liste'>
                         <li className='lien-nav' onClick={logout}>Deconnexion</li>
                         <li className='lien-nav' onClick={news}>Fil d'actualité</li>
                         <li className='lien-nav' onClick={myPosts}>Mes publications</li>

@@ -56,7 +56,7 @@ exports.updatePost = (req, res, next) => {
     //récupèrer user et post
     const post =  Post.findOne({ _id: req.params.id})
     const user =  User.findOne({ _id:req.body.userId })
-    console.log(req.body.userId)
+    // console.log(req.body.userId)
     const userAuthorized = user.isAdmin || req.body.userId === post.userId
     //Lorque la modification contient un changement
     const postObject = req.file ? {...req.body, imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,} : { ...req.body };
@@ -138,7 +138,7 @@ exports.likePost = (req, res, next) => {
     let postId = req.body.id
     let like = req.body.like
     let userId = req.body.userId
-    console.log(req.body)
+    // console.log(req.body)
 
     //Quand un user like  un post
     Post.findOne({_id: postId})

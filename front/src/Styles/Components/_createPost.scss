@@ -64,52 +64,33 @@
     
 }
 
-@media screen and (max-width: 1250px) {
-  .post-footer button {
-    margin-top: 8px;
-  }
+// @media screen and (max-width: 1250px) {
+//   .post-footer button {
+//     margin-top: 8px;
+//     width: 300px;
   
-}
-@media  screen and (max-width: 900px) {
+//   }
+  
+// }
+@media  screen and (max-width: 998px) {
   .container-reate-post  {
       .create-post {
-        background: #000;
         width: auto;
-        color: white;
+        margin: 10px 5px;
+       
       }
     }
   }
   
   @media  screen and (max-width: 588px){
-    form{
+    textarea{
       position: relative;
-      
-      
       .create-post {
-        color: bisque;
+        color: black;
 
       }
-      
-
     }
 
   }
 
 
-
- 
-  // @media only screen and (max-width: 435px) {
-  
-  // .create-post-button {
-  //   margin-right: 6px;
-  // }
-  // textarea{
-    
-  // }
-  
-  
-  //   .create-post-footer-text {
-  //     font-size: 12px;
-  //   }
-  
-  // }

@@ -111,15 +111,17 @@ export default function Signup() {
             onChange={(e) => setLastName(e.target.value)}
         />
         <span className='errorName'></span>
+        <br />
         <label htmlFor="firstName">Prénom</label>
         <input 
-            type="text"
-            id="firstName" 
-            required
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <span className='errorName'></span>
+          type="text"
+          id="firstName" 
+          required
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <span className='errorName'></span>
+        <br />
         <label htmlFor="email">Email</label>
         <input 
           type="text"
@@ -130,6 +132,7 @@ export default function Signup() {
           placeholder='jean@gmail.com'
         />
         <span className="emailError"></span>
+        <br />
         <label htmlFor="password">Mot de passe</label> 
         <input
             type="password"
@@ -139,6 +142,7 @@ export default function Signup() {
             onChange={(e) => setPassword(e.target.value)}
           />
         <span className='passwordError'></span>
+        <br />
         <label htmlFor="password">Confirmation de mot de passe</label>
         <input
             type="password"
@@ -153,7 +157,7 @@ export default function Signup() {
           <button onClick={(e) => handleSubmit(e)} value="Se connecter">Envoyez</button>
         </NavLink>
         <NavLink to="/login">
-        <h3 id='s_inscrire'>Retour👈🏽</h3>
+        <h4 id='s_inscrire'>Retour👈🏽</h4>
         </NavLink>
       </form>
     </main>

@@ -1,58 +1,66 @@
 .card-form{
-    // display: flex;
-    // // justify-content: space-between;
-    // // align-items: center;
-    .login-form {
-        // text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+    
+        
+
+    form{
+        border-radius: 20px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-40%,-50%);
-        border-style: none;
+        text-align: center;
         background: #4e5166;
         box-shadow: 5px 5px 10px #202020, -5px -5px 12px #414040;
         min-width: 400px;
         max-width: 650px;
-        // width: 50%;
         min-height: 200px;
         height: auto; 
-        text-align: center;
-        margin: 60px  auto ;
         padding: 20px;
-        border-radius:  20px;
-        border-style: none;
-    }
-    input{
-        text-align: center;
-        border-style: none;
-        border-radius: 20px;
-        padding: 8px 10px;
-        width: 250px;
-    
-    }
-    label{
+        margin-top: 20px;
+
+        input{
+            text-align: center;
+            border-style: none;
+            border-radius: 20px;
+            padding: 8px 10px;
+           
+        
+        }
+        input[type="email"] {
+            text-transform: lowercase;
+        
+        }
+
+        label{
+            margin-bottom: 5px;
+            // margin-top: 8px;
+        }
+         h3{
+            margin-top: 15px;
+        }
+        button{
+            // margin-top: 9px;
         margin-bottom: 5px;
-        margin-top: 8px;
-    }
-    
-    button{
-    margin-bottom: 10px;
-    font-size: 15px;
-    padding: 10px 25px;
-    border-style: none;
-    border-radius: 15px;
-    background: #ff7b77;
-    cursor: pointer;
-    font-weight: bold;
+        font-size: 15px;
+        padding: 10px 25px;
+        border-style: none;
+        border-radius: 15px;
+        background: #ff7b77;
+        cursor: pointer;
+        font-weight: bold;
+      
+        }
+        #s_inscrire:hover{
+            transform: translateX(5px);
+        }
+        span{
+            color: #f2f2f2;
+            font-size: 14px;
+        }
 
     }
-    #s_inscrire:hover{
-        transform: translateX(3px);
-    }
-    span{
-        color: #f2f2f2;
-    }
+   
 }

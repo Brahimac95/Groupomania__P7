@@ -34,7 +34,7 @@ export default function Login() {
       })
       .then((res) => {
         
-        // console.log(res.data);
+        console.log(res.data);
         localStorage.setItem("dataUser", JSON.stringify(res.data));
         navigate("/")
           
@@ -79,7 +79,7 @@ export default function Login() {
           <br />
           <button onClick={handleClick} value="Se connecter">Connexion</button>
           <NavLink to="/signup">
-            <h3 id='s_inscrire'>S'inscrire</h3>
+            <h4 id='s_inscrire'>S'inscrire</h4>
           </NavLink>
         </form>
       </main>
