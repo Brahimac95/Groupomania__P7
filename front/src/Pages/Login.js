@@ -6,6 +6,9 @@ import HeaderAuth from '../Components/HeaderAuth';
 import '../Styles/Pages/_login.scss';
 
 export default function Login() {
+
+
+  //Initiamisation des Hooks
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("")
@@ -17,14 +20,14 @@ export default function Login() {
     handleSubmit(e)
 
   }
-
+  //Fonction d'enregistrement des données de l'utilisateur y compris le TOKEN dans le LS
   function handleSubmit (e) {
     e.preventDefault();
     if(email === "" || password === ""){
       alert("Veuillez remplir le champ de formulaire vide")
     } else {
 
-      return axios
+      return axios //Axios pour faire notre requête à l'API
 
       .post("http://localhost:5000/api/auth/login", {
         email: email,
@@ -35,7 +38,7 @@ export default function Login() {
       .then((res) => {
         
         console.log(res.data);
-        localStorage.setItem("dataUser", JSON.stringify(res.data));
+        localStorage.setItem("dataUser", JSON.stringify(res.data));//On serialise les données puis on les met dans le LS
         navigate("/")
           
       })
@@ -65,7 +68,6 @@ export default function Login() {
           <div className="emailError"></div>
           <br />
           <label htmlFor="password">Mot de passe</label>
-        
           <input
             type="password"
             name="passwor"

@@ -6,6 +6,7 @@ import '../Styles/Pages/_myPost.scss';
 import'../Styles/Pages/_home.scss'
 
 export default function MyPost() {
+
   const userData = JSON.parse(localStorage.getItem("dataUser"))
   const userId = userData.userId;
   const [posts, setPosts] = useState([])
@@ -43,7 +44,6 @@ export default function MyPost() {
         <div className="loader"></div>
       </div>
       <HeaderNav/>
-        {/* <h1>MyPost</h1> */}
         
         {/* On affiche les publication de la plus ressente a plus ancienne  */}
         <main style={{padding: "50px 0 150px 0"}}>
