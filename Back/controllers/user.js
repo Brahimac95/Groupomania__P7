@@ -11,6 +11,7 @@ require('dotenv').config();
 
 //Création d'un utilisateur
 exports.signup = (req, res, next) => {
+  //On vérifie si le mot de passe correspond à notre model
   if(!Password.validate(req.body.password)) {
     return res.status(400).json({
       message: 'Le mot de passe doit être au min 8 caractères, 1 majuscule et 1 chiffre'
@@ -19,6 +20,7 @@ exports.signup = (req, res, next) => {
     return res.status(400).json({
       message: ' Les mots ne sont pas identiques '
     })
+    //Si le model correspond on envoie les informations de l'utilisateur à la BDD avec un mot de pas hashé
   } else if (Password.validate(req.body.password) && req.body.password === req.body.passwordConfirm){
     bcrypt.hash(req.body.password, 10)
     .then((hash) => {
@@ -27,7 +29,7 @@ exports.signup = (req, res, next) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: hash,
-        picture: "/images/profil/profil.jpg",
+        picture: "http:localhost:5000/images/profil/profil.jpg",
         isAdmin: false,
       });
       user
@@ -76,6 +78,7 @@ exports.login = (req, res, next) => {
 
 };
 
+//Recupération d'un seul utilisateur grâce à son id
 exports.getOneUser = (req, res, next) => {
   // console.log(req.params.id)
   User.findOne({ _id: req.query.userId }).select('-password -email')
@@ -104,7 +107,7 @@ exports.updateUser = (req, res, next) => {
       imageUrl = `${req.protocol}://${req.get('host')}/images/${
         req.file.filename
       }`
-      //On regarde s'il y a une image a traité pour pouvoir la supprimer 
+      //On regarde s'il y a une image a traité puis on la supprime avec la méthode unlink de Fs  de notre dossier images
       fs.unlink(`images/${filename}`, (error) => {
         if (error) console.log({error:"Erreur de suppression de l'ancienne image"});
         else {
@@ -140,7 +143,12 @@ exports.deleteUser = (req, res, next) => {
       res.status(401).json({ message: 'Non autorisé4'})
     } else if(user.picture != null){
       const filename = user.picture.split("/images")[1]
-      // fs.unlink(`images/${filename}`),() =>{}
+      fs.unlink(`images/${filename}`,(error) =>{
+        if (error) console.log({error:"Erreur de suppression de l'ancienne image"});
+        else {
+          console.log(`Suppression de l'ancienne images ./images: ${filename}`);
+        }
+      })
         User.remove({_id: req.params.id})
         .then(() => res.status(200).json({message: 'User supprimé'}))
         .catch(error => res.status(401).json({ error}))

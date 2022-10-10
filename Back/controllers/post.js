@@ -5,21 +5,6 @@ const fs = require('fs');
 
 //======================CRUD POST============================//
 
-//Affichage de tout les posts
-// exports.getAllPosts = (req, res, next) => {
-//     let postArray = [];
-//     Post.find().sort({ createdAt: +1})
-//     .then((posts) => {
-//         posts.forEach((post) => {
-//             User.findOne({_id: post.userId})
-//             .then(() => { console.log(post.post)})//console pour voir les posts
-//             postArray.push(post)
-//         })
-//         res.status(200).json(postArray)
-//     })
-//     .catch(error => res.status(400).json({ error }))
-// }
-
 
 //Affichage de tout les posts
 exports.getAllPosts = (req, res, next) => {
@@ -35,15 +20,16 @@ exports.getOnePost = (req, res, next) => {
         .catch(error => res.status(404).json({error}))
 }
 
-
+//Création d'un post
 exports.createPost = (req, res, next) => {
     const objectPost = req.body;
     const post = new Post({
         ...objectPost,
+        //On regarde s'il ya une image dans le post sinon on envoie un string vide
         imageUrl: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : ""
     })
     post
-    .save()
+    .save()//On enregistre dans la BDD
     .then(() =>  {res.status(201).json(post)})
     .catch(error => res.status(400).json({ error }))
 
@@ -53,10 +39,11 @@ exports.createPost = (req, res, next) => {
 
 //Modification d'un post
 exports.updatePost = (req, res, next) => {
-    //récupèrer user et post
+    //récupère user et post
     const post =  Post.findOne({ _id: req.params.id})
     const user =  User.findOne({ _id:req.body.userId })
     // console.log(req.body.userId)
+    //On vérifie si celui qui veut modifier est autorisé a le faire ou pas 
     const userAuthorized = user.isAdmin || req.body.userId === post.userId
     //Lorque la modification contient un changement
     const postObject = req.file ? {...req.body, imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,} : { ...req.body };
@@ -65,7 +52,7 @@ exports.updatePost = (req, res, next) => {
     if(!userAuthorized){
       return  res.status(403).json({ error: new Error("Vous n'êtes pas autorisé") });
     }
-    //trouver le post et le supprimer
+    //Si la modification contient un image on l'ajoute puis on supprime l'ancienne
     if (req.file) {
       Post.findOne({ _id: req.params.id })
         .then((post) => {
@@ -145,18 +132,18 @@ exports.likePost = (req, res, next) => {
     .then((post) => {
         if(like === 1){
             Post.updateOne({ _id: postId}, {
-                $inc: {likes: like},
+                $inc: {likes: like},//On ajoute le like avec ma méthode $inc de mongoBD puis on push l'id du user qui à liké
                 $push: {usersLiked: userId}
             })
             .then(() => res.status(200).json({ mesage : 'Vous avez ajouté un like !'}))
             .catch(error => res.status(400).json({ error }));
         }
-        //Quand le user annule son like
+        //Lorsqu'un user annule son like
         else if(like === 0) {
             Post.updateOne({ _id: postId}, {
 
-                $inc: {likes: -1},
-                $pull: { usersLiked: userId}
+                $inc: {likes: -1},//On 
+                $pull: { usersLiked: userId}//On retire l'id du tableau
             })
             .then(() => res.status(200).json({ message : `Vous retirez votre like ! `}))
             .catch(error => res.status(400).json({ error }));
