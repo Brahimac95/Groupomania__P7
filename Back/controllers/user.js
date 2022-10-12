@@ -29,7 +29,6 @@ exports.signup = (req, res, next) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: hash,
-        picture: "http:localhost:5000/images/profil/profil.jpg",
         isAdmin: false,
       });
       user
@@ -107,19 +106,40 @@ exports.updateUser = (req, res, next) => {
       imageUrl = `${req.protocol}://${req.get('host')}/images/${
         req.file.filename
       }`
-      //On regarde s'il y a une image a traité puis on la supprime avec la méthode unlink de Fs  de notre dossier images
-      fs.unlink(`images/${filename}`, (error) => {
-        if (error) console.log({error:"Erreur de suppression de l'ancienne image"});
-        else {
-          console.log(`Suppression de l'ancienne images ./images: ${filename}`);
-        }
-      });
+      if(filename === 'profil.jpg'){
+        User.updateOne(
+          { _id: req.params.id },
+          {
+            $set: { picture: imageUrl},
+          }
+        )
+          .then(() => {
+            User.findById({ _id: req.params.id })
+            .then((user) =>
+              res
+                .status(200)
+                .json({ picture: user.picture })
+            )
+          })
+          .catch((err) => res.status(500).json({ msg: err }))
+
+      }
+      else{
+
+        //On regarde s'il y a une image a traité puis on la supprime avec la méthode unlink de Fs  de notre dossier images
+        fs.unlink(`images/${filename}`, (error) => {
+          if (error) console.log({error:"Erreur de suppression de l'ancienne image"});
+          else {
+            console.log(`Suppression de l'ancienne images ./images: ${filename}`);
+          }
+        });
+      }
   
     }
       User.updateOne(
         { _id: req.params.id },
         {
-          $set: { picture: imageUrl, description: req.body.description },
+          $set: { picture: imageUrl},
         }
       )
         .then(() => {
@@ -127,7 +147,7 @@ exports.updateUser = (req, res, next) => {
           .then((user) =>
             res
               .status(200)
-              .json({ picture: user.picture, description: user.description })
+              .json({ picture: user.picture })
           )
         })
         .catch((err) => res.status(500).json({ msg: err }))

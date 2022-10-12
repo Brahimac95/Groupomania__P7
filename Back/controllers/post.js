@@ -99,7 +99,7 @@ exports.deletePost = (req, res, next)=>  {
                             fs.unlink(`images/${filename}`, error => {
                                 console.log(`image supprimé de ${filename} `)
                                 if(error) throw error
-                                console.log(error)
+                                // console.log(error)
                             })
                         } else {
                             console.log('Post sans fichier image')

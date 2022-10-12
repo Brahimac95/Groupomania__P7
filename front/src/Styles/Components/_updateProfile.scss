@@ -13,8 +13,8 @@
   .card{
       position: relative;
       background: #fff;
-      width: 310px;
-      height: 400px;
+      width: 330px;
+      height: 450px;
       padding: 5px;
       box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
       margin-top: 15px;
@@ -43,6 +43,7 @@
     
     }
     .img-wrap{
+      // border: 1px solid rgb(255, 255, 255);
         position: relative;
         width: 200px;
         height: 200px;
@@ -74,7 +75,7 @@
 
     input[type="file"] {
         cursor: pointer;
-        padding: 25px;
+        padding: 40px;
         margin: 40px 0;
 
         // @media screen and(max-width: 1121px) {
@@ -83,15 +84,17 @@
     }
 
     label {
+     
       text-align: center;
+      font-size: 14px;
       position: absolute;
-      bottom: 60px;
-      right: 168px;
+      bottom: 88px;
+      right: 178px;
       width: 127px;
       font-weight: bold;
       background: #ff7b77;
       border-radius: 20px;
-      padding: 10px 0;
+      padding: 11px 0;
       transition: 0.2s;
       z-index: 10;
       cursor: pointer;

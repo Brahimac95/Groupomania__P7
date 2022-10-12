@@ -1,4 +1,5 @@
 .container-reate-post {
+  position: relative;
     // text-align: center;
     display: flex;
     justify-content: center;
@@ -14,11 +15,12 @@
       border-radius: 20px;
       color: black;
 
-      .post-redaction {
+      .post-footer{
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
+        justify-content: space-between;
+        input[type="file"]{
+          opacity: 0;
+        }
       }
       textarea {
       // color: white;
@@ -39,11 +41,22 @@
         
     }
 
-    // .post-footer{
-    //     position: absolute;
-    //     top: 80%;
-    //     left: 16%;
-        
+    label {
+     
+      // text-align: center;
+      font-size: 14px;
+      position: absolute;
+      bottom: 40px;
+      left: 20px;
+      // width: 127px;
+      font-weight: bold;
+      background: #ff7b77;
+      border-radius: 10px;
+      padding: 11px 0;
+      transition: 0.2s;
+      z-index: 10;
+      cursor: pointer;
+    }
     // }
 
     .create-post-btn {

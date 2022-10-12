@@ -28,7 +28,7 @@ export default function UpdateProfil() {
         }
       })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         setUserData(res.data)
   
       })
@@ -86,7 +86,7 @@ export default function UpdateProfil() {
                 defaultValue={userData.description}
               >
               </textarea> */}
-              <label htmlFor="file">Modifiez l'image</label>
+              <label htmlFor="file">Ajoutez une image</label>
               <input type="file" 
                   id="file" 
                   name='file' 

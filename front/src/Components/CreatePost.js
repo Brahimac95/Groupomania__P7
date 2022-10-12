@@ -97,7 +97,7 @@ export default function CreatePost(props) {
             </textarea>
           </div>
           <div className="post-footer"> 
-            <label htmlFor="imagePost">Ajoutez une image 📸 :</label>
+            <label htmlFor="imagePost">Ajoutez une image 📸</label>
             <input type="file" name="imagePost" id="imagePost" 
               accept='.jpg, .jpeg, .png, .gif'
               onChange={handleImg} 

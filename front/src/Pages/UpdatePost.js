@@ -92,7 +92,7 @@ export default function UpdatePost() {
     })
 
     .then(res => {
-      // console.log(res)
+      console.log(res)
       if(editPost === "") {
         alert("Votre ancien message ne sera pas pris en compte, reédité le 😉")
 
