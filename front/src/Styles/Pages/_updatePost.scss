@@ -4,6 +4,7 @@ h2{
     margin-top: 20px;
 }
 .update-container{
+  position: relative;
     display: flex;
     justify-content: center;
     // background: #4e5166;
@@ -30,17 +31,16 @@ h2{
         margin: 15px;
         cursor: pointer;
         &:hover{
-            // transform: translateX(3px);
             transform: scale(1.03);
         }
     }
     textarea {
     // color: white;
       font-size: 15px;
-    //   width: 55%;
+      width: 55%;
       margin-top: -8px;
       margin-bottom: 12px;
-      padding: 50px;
+      padding: 60px 0;
       background: transparent;
       border: 1px solid black;
       border-radius: 8px;
@@ -54,12 +54,22 @@ h2{
 
     .create-post-input-file{
         padding: 15px;
-        color: #ff7b77;
+        // color: #ff7b77;
+    }
+    label {
+      position: absolute;
+      margin-left: 30px;
+      // width: 30px;
+      font-weight: bold;
+      border-radius: 5px;
+      padding: 1px 15px ;
+      z-index: 10;
+      cursor: pointer;
     }
 
-    // input[type="file"] {
-    //     background: #ff7b77;
-    //   }
+    input[type="file"] {
+       opacity: 0;
+      }
 
 
 

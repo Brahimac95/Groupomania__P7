@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import HeaderNav from '../Components/HeaderNav';
 import '../Styles/Pages/_updatePost.scss'
+import GaleryImg from "../assets/image-gallery.png"
 
 
 
@@ -168,7 +169,9 @@ export default function UpdatePost() {
                           defaultValue={postData.post}
                         />
                       </div>
-                      <label className="modify-post-input-label" htmlFor="imagePost">Changer d'image :</label>
+                      <label htmlFor="imagePost" className="modify-post-input-label" >
+                      Modifiez l'image <img src={GaleryImg} alt="icon galerie" />
+                      </label>
                         <input type="file" name="imagePost" id="imagePost"
                           accept=".png, .jpeg, .jpg, .gif" onChange={handleImg}
                           value={postImgInput} className="create-post-input-file"

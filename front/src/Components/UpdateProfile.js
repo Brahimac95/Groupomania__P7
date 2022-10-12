@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "../Styles/Components/_updateProfile.scss";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import GaleryImg from "../assets/image-gallery.png"
 
 
 export default function UpdateProfil() {
@@ -86,7 +87,10 @@ export default function UpdateProfil() {
                 defaultValue={userData.description}
               >
               </textarea> */}
-              <label htmlFor="file">Ajoutez une image</label>
+              {/* <label htmlFor="file">Ajoutez une image</label> */}
+              <label htmlFor="file" className="modify-post-input-label" >
+                Ajoutez une image <img src={GaleryImg} alt="icon galerie" />
+              </label>
               <input type="file" 
                   id="file" 
                   name='file' 

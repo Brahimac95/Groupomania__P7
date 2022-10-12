@@ -9,7 +9,7 @@
       box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
       position: relative;
       background: #e6e2e2;
-      padding: 40px 20px ;
+      padding: 30px 20px ;
       margin-top: 25px;
       width: 35%;
       border-radius: 20px;
@@ -43,17 +43,14 @@
 
     label {
      
-      // text-align: center;
-      font-size: 14px;
       position: absolute;
       bottom: 40px;
-      left: 20px;
-      // width: 127px;
+      left: 25px;
+      // width: 30px;
       font-weight: bold;
-      background: #ff7b77;
-      border-radius: 10px;
-      padding: 11px 0;
-      transition: 0.2s;
+      // background: #ff7b77;
+      border-radius: 5px;
+      padding: 1px 15px ;
       z-index: 10;
       cursor: pointer;
     }

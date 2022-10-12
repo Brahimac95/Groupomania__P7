@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState} from 'react';
 import axios from 'axios';
 import "../Styles/Components/_createPost.scss";
+import GaleryImg from "../assets/image-gallery1.png"
 
 export default function CreatePost(props) {
 
@@ -97,7 +98,9 @@ export default function CreatePost(props) {
             </textarea>
           </div>
           <div className="post-footer"> 
-            <label htmlFor="imagePost">Ajoutez une image 📸</label>
+            <label htmlFor="imagePost">
+              <img src={GaleryImg} alt="icon galerie" />
+            </label>
             <input type="file" name="imagePost" id="imagePost" 
               accept='.jpg, .jpeg, .png, .gif'
               onChange={handleImg} 

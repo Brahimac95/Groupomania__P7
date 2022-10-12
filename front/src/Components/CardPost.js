@@ -141,7 +141,6 @@ export default function CardPost({post}) {
             <p className='card-date'>Le {datePaser(post.createdAt)}</p>
         </div>
         
-
         <img src={post.imageUrl}  className='card-img' alt='' />
         <p className='card-text'> {post.post}</p>
         <div className="card-footer">
@@ -149,26 +148,22 @@ export default function CardPost({post}) {
             {liked === true && (<img src={HeartPlein} className="fa-regular fa-heart like" onClick={unlike}/> )}
             {/* Lorsuq'un user annule son like */}
             {liked === false && (<img src={Heartvide}
-                    className="fa-regular fa-heart like" onClick={like}/> )}
+                className="fa-regular fa-heart like" onClick={like}/> )
+            }
 
-                {/*/!*if user dislike post*!/*/}
-                {/* {liked === false && (<button className="card-post-button-like" aria-label="button for like"><i
-                    className="fa-regular fa-heart" onClick={like}></i></button>)}
-         */}
-             {/*if post was created by user or if user isAdmin*/}
-         {id === post.userId && (<button className="modify-btn" onClick={modifyPost}>Modifier</button>) ||
-                isAdmin && (<button className="modify-btn" onClick={modifyPost}>Modifier</button>)}
+            {/*on regarder si c'est la personne qui a créé le post ou si c'est l'administrateur*/}
+            {id === post.userId && (<button className="modify-btn" onClick={modifyPost}>Modifier</button>) ||
+                isAdmin && (<button className="modify-btn" onClick={modifyPost}>Modifier</button>)
+            }
          
-            
-
         </div>
 
-         {/*if post.userLiked.length === 0*/}
-         {numberLike === 0 && (<p className="card-post-number-like">{numberLike} like</p>)}
-            {/*if post.userLiked.length === 1*/}
-            {numberLike === 1 && (<p className="card-post-number-like">{numberLike} like</p>)}
-            {/*if post.userLiked.length > 1*/}
-            {numberLike > 1 && (<p className="card-post-number-like">{numberLike} likes</p>)}
+         {/*Lorsque le nombre de like*/}
+            {numberLike === 0 && (<p className="card-post-number-like">{numberLike} like </p>)}
+            {/*Lorsque le nombre de like est egala à 1*/}
+            {numberLike === 1 && (<p className="card-post-number-like">{numberLike} like </p>)}
+            {/*Lorsque le nombre de like est supérieur à 1*/}
+            {numberLike > 1 && (<p className="card-post-number-like">{numberLike} likes </p>)}
         
          
 

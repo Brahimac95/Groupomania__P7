@@ -13,7 +13,7 @@
   .card{
       position: relative;
       background: #fff;
-      width: 330px;
+      width: 360px;
       height: 450px;
       padding: 5px;
       box-shadow: 5px 5px 10px #202020, -5px -5px 10px #464646;
@@ -75,7 +75,7 @@
 
     input[type="file"] {
         cursor: pointer;
-        padding: 40px;
+        padding:  45px 0;
         margin: 40px 0;
 
         // @media screen and(max-width: 1121px) {
@@ -88,14 +88,13 @@
       text-align: center;
       font-size: 14px;
       position: absolute;
-      bottom: 88px;
-      right: 178px;
-      width: 127px;
+      bottom: 81px;
+      right: 195px;
+      // width: 110px;
       font-weight: bold;
       background: #ff7b77;
-      border-radius: 20px;
-      padding: 11px 0;
-      transition: 0.2s;
+      border-radius: 10px;
+      padding: 5px 5px 10px ;
       z-index: 10;
       cursor: pointer;
     }
