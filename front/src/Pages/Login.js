@@ -8,18 +8,15 @@ import '../Styles/Pages/_login.scss';
 export default function Login() {
 
 
-  //Initiamisation des Hooks
+  //Initialisation des Hooks
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
-    const [firstName, setFirstName] = useState("")
+    const [firstName] = useState("")
     const [ error, setError] = useState(false)
     let navigate = useNavigate()
 
 
-  function handleClick (e) {
-    handleSubmit(e)
 
-  }
   //Fonction d'enregistrement des données de l'utilisateur y compris le TOKEN dans le LS
   function handleSubmit (e) {
     e.preventDefault();
@@ -45,18 +42,21 @@ export default function Login() {
       .catch((error)=> {
         setError(true)
         console.log(error);
-        // setError(true)
       })
         
     }
      
   }
+  function handleClick (e) {
+    handleSubmit(e)
+
+  }
 
 
   return (
     <>
-
       <HeaderAuth/>
+
       <main className='card-form'>
         <form className="login-form">
           <h3>Se connecter</h3>
@@ -70,7 +70,7 @@ export default function Login() {
           <label htmlFor="password">Mot de passe</label>
           <input
             type="password"
-            name="passwor"
+            name="password"
             id="password"
             onChange={(e) => setPassword(e.target.value)} required
             value={password}

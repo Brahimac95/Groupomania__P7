@@ -13,41 +13,37 @@ export default function Signup() {
   const [ password, setPassword] = useState("")
   const [ passwordConfirm, setPasswordConfirm] = useState("")
 
-  //Regex pour le controle du password
-  let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
-  let testPassword = strongRegex.test(password);
-  let passwordErrorReg = document.querySelector(".passwordError");
-  let passwordError = document.querySelector(".password.error");
-
-  //Regex nom et prénom
-  let errorName = document.querySelectorAll('.errorName')
-  let regexName = new RegExp(/^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$/)
-  let testName = regexName.test(lastName, firstName)
-
-
-
+  //Hooks de gestion d'erreur lors de l'inscription
+  const [firstNameError, setFirstNameError] = useState(false)
+  const [lastNameError, setLastNameError] = useState(false)
+  const [passwordErrorReg, setPasswordErrorReg] = useState(false)
+  const [passwordErrorConfirm, setPasswordErrorConfirm] = useState(false)
   
-  // const testName = regExpName.test(firstName)
-
   
-
-  // function handleClick (e){
-  //   handleSubmit(e)
-   
-  // }
   
+  let strongRegexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");//PassewordRegex
+  
+  let regExName = new RegExp(/^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$/)//Regex nom et prénom
+
 
 
   function handleSubmit (e) {
     e.preventDefault()
-    // passwordError.innerHTML = "";
-    // passwordErrorReg.innerHTML = "";
+    //On  est remet à false quand l'utilisateur rectifie
+    setPasswordErrorReg(false)
+    setPasswordErrorConfirm(false)
+    setFirstNameError(false)
+    setLastNameError(false)
+    
   
 
-    if(!testName){
-      errorName.innerHTML= "Le  nom  ou le prénom ne doit pas contenir de chiffre"
+    if(!regExName.test(lastName)){
+      setLastNameError(true)
     }  
-    if(
+    else if(!regExName.test(firstName)){
+      setFirstNameError(true)
+    }  
+    else if(
       firstName === "" ||
       lastName === "" ||
       email === "" ||
@@ -58,11 +54,11 @@ export default function Signup() {
       
     }  
      
-    else if(!testPassword) {
-      passwordErrorReg.innerHTML = "Le mot de passe doit contenir au moins 8 caractères 1 majuscule et 1 chiffre";
+    else if(!strongRegexPassword.test(password)) {
+      setPasswordErrorReg(true) ;
     }
      else if(password !== passwordConfirm){
-      passwordError.innerHTML = "Les mots de passe ne sont pas identique 🥺"
+      setPasswordErrorConfirm(true)
 
     } 
     else {
@@ -110,7 +106,7 @@ export default function Signup() {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
         />
-        <span className='errorName'></span>
+        <span>{ lastNameError && "Le  nom ne doit pas contenir de chiffre" }</span>
         <br />
         <label htmlFor="firstName">Prénom</label>
         <input 
@@ -120,7 +116,7 @@ export default function Signup() {
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
-        <span className='errorName'></span>
+        <span>{ firstNameError && "Le prénom ne doit pas contenir de chiffre" }</span>
         <br />
         <label htmlFor="email">Email</label>
         <input 
@@ -141,7 +137,7 @@ export default function Signup() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        <span className='passwordError'></span>
+        <span>{ passwordErrorReg && "Le mot de passe doit contenir au moins 8 caractères 1 majuscule et 1 chiffre" }</span>
         <br />
         <label htmlFor="password">Confirmation de mot de passe</label>
         <input
@@ -151,7 +147,7 @@ export default function Signup() {
             value={passwordConfirm}
             onChange={(e) => setPasswordConfirm(e.target.value)}
             />
-        <span className="password error"></span>
+        <span className="password error">{ passwordErrorConfirm && "Les mots de passe ne sont pas identique 🥺" }</span>
         <br />
         <NavLink to="/login">
           <button onClick={(e) => handleSubmit(e)} value="Se connecter">Envoyez</button>
