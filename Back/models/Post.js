@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema(
         post: { type: String, default: ""},
         imageUrl: { type: String},
         likes: { type: Number, default:0},
-        firstName: { type: String},
+        firstName: { type: String},//Le prenom du publicateur
         usersLiked: { type:[String] , default: []},
 
     },

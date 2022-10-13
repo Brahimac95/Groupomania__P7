@@ -42,6 +42,7 @@ exports.signup = (req, res, next) => {
   // console.log(req.body) ;
 };
 
+//Connexion à un compte
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
   .then((user) => {
@@ -59,7 +60,7 @@ exports.login = (req, res, next) => {
         } else {
           res.status(200).json({
             userId: user._id,
-            email: user.email,
+            // email: user.email,
             firstName: user.firstName,
             token: jwt.sign(
               { userId: user._id},
@@ -87,7 +88,7 @@ exports.getOneUser = (req, res, next) => {
 
 //Recuperer tout les users
 exports.getAllUsers = (req, res, next) => {
-  User.find().select('-password ')
+  User.find().select('-password -email ')
   .then( users => res.status(200).json(users))
   .catch(error => res.status(404).json({ error }))
 };
