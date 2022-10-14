@@ -15,7 +15,7 @@ export default function UpdatePost() {
   const url = window.location.pathname;
   const postId = url.split('/')[2]
   const navigate = useNavigate();
-  const [editPost , setEditPost] = useState('');
+  const [editPost , setEditPost] = useState("");
   const [postImgInput , setPostImgInput] = useState('');
   const [imgPostFile, setImgPostFile] = useState('');
   const [postData, setPostData] = useState('');
@@ -94,14 +94,8 @@ export default function UpdatePost() {
 
     .then(res => {
       console.log(res)
-      if(editPost === "") {
-        alert("Votre ancien message ne sera pas pris en compte, reédité le 😉")
-
-      } else {
-
-        navigate('/')
-      }
-
+      navigate('/')
+  
     })
     .catch((err) => {
       console.log(err);
@@ -109,6 +103,11 @@ export default function UpdatePost() {
     
 
   }
+
+  //Pour eviter que le contenu du message soit undefined ou vide
+  useEffect(() => {
+    setEditPost(postData.post)
+  },[postData])
 
   //Fonction de lecture des input file
   function handleImg (e) {
@@ -148,11 +147,7 @@ export default function UpdatePost() {
 
 
 
-
-
-
   return (
-
 
     <div>
       <HeaderNav/>
@@ -165,6 +160,7 @@ export default function UpdatePost() {
                         <textarea maxLength="500" className="update-textarea" 
                           id="message-update"
                           name="message"
+                          // value={editPost}
                           onChange={(e) => setEditPost(e.target.value)}
                           defaultValue={postData.post}
                         />

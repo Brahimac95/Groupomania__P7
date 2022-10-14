@@ -12,7 +12,6 @@
     display: block;
     width: 100%;
     border-radius: 10px ;
-
     // margin-left: 50px;
     margin: 5px 0;
     max-width: 450px;
@@ -46,9 +45,6 @@
 .card-text {
     padding: 8;
     margin-left: 15px;
-    // background: #e9e6e6;
-    // width: 100%;
-    // color: blue;
     font-size: 18px;
 }
 
@@ -56,16 +52,12 @@
     
     width: 25px;
     margin-top: 5px;
-    margin-left: 10px;
+    margin-left: 18px;
 
     // margin: 10px 0 0 16px;
     cursor: pointer;
     &:hover{
         transform: scale(1.1);
-    }
-    .fa-heart{
-        
-      
     }
 }
 
@@ -93,9 +85,8 @@
         
     }
 
-
-
 }
+
 @media only screen and (max-width: 900px) {
 
     .card-post{

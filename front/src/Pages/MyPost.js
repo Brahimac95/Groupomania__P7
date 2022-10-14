@@ -21,7 +21,7 @@ export default function MyPost() {
     })
     //On recuper tout les posts
     .then((res) => {
-      console.log(res)
+      // console.log(res)
       setPosts(res.data)
 
     })

@@ -38,6 +38,8 @@ export default function UpdateProfil() {
       })
     }, [userDataLs.token, userId])
   
+
+    //Modification du profil
     const updateProfil = () => {
       // e.preventDefault();
   
@@ -77,9 +79,8 @@ export default function UpdateProfil() {
         <div className="updateProfil">
           <h2>Votre profil</h2>
           <div className="card">
-            <img src={userData.picture} alt="Photo de profil" className='img-wrap' />
+            <img src={userData.picture} alt="" className="img-wrap" />
             <h3>{userData.firstName} {userData.lastName} </h3>
-            {/* <h3 >Bio: {description}</h3> */}
             <form onSubmit={(e) => updateProfil(e)}  className="upload-pic"
               encType="multipart/form-data" >
               {/* <textarea name="description" id="description"
