@@ -117,9 +117,7 @@ exports.updateUser = (req, res, next) => {
           .then(() => {
             User.findById({ _id: req.params.id })
             .then((user) =>
-              res
-                .status(200)
-                .json({ picture: user.picture })
+              res.status(200).json({ picture: user.picture })
             )
           })
           .catch((err) => res.status(500).json({ msg: err }))
@@ -146,9 +144,7 @@ exports.updateUser = (req, res, next) => {
         .then(() => {
           User.findById({ _id: req.params.id })
           .then((user) =>
-            res
-              .status(200)
-              .json({ picture: user.picture })
+            res.status(200).json({ picture: user.picture })
           )
         })
         .catch((err) => res.status(500).json({ msg: err }))

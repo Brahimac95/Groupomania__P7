@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   passwordConfirm: { type: String, require: true },
-  picture: { type: String, default: "http:localhost:5000/images/profil.jpg"},
+  picture: { type: String, default: "http://localhost:5000/images/profil.jpg"},
   isAdmin: { type: Boolean, require: true },
 }, 
 { timestamps: true}
