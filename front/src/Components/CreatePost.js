@@ -3,6 +3,7 @@ import { useEffect, useState} from 'react';
 import axios from 'axios';
 import "../Styles/Components/_createPost.scss";
 import GaleryImg from "../assets/image-gallery1.png"
+import Send from "../assets/send.png"
 
 export default function CreatePost(props) {
 
@@ -92,7 +93,7 @@ export default function CreatePost(props) {
             <textarea 
               aria-label='Champ pour ajouter le message de votre post' 
               id="textarea-form"
-              placeholder={`Quoi de neuf ${userData.firstName} ?`}
+              placeholder={`Quoi de neuf ?`}
               onChange={(e) => setPost(e.target.value)}
               value={post} >
             </textarea>
@@ -106,7 +107,7 @@ export default function CreatePost(props) {
               onChange={handleImg} 
               value={postImgInput}
             />
-            <button type='submit' className="create-post-btn" >Publiez</button>
+            <button type='submit' className="create-post-btn" ><img src={Send} alt="" /></button>
           </div>
         </form>
       </div>

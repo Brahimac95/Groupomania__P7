@@ -57,16 +57,16 @@
     // }
 
     .create-post-btn {
-        font-size: 14px;
-        font-weight: bold;
-        background: #ff7b77;
+        // font-size: 14px;
+        // font-weight: bold;
+        background: transparent;
         border-style: none;
         padding: 8px;
         border-radius: 6px;
         cursor: pointer;
         &:hover{
             // transform: translateX(3px);
-            transform: scale(1.03);
+            transform: scale(1.1);
         }
     }
 
