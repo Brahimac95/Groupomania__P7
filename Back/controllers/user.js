@@ -107,24 +107,8 @@ exports.updateUser = (req, res, next) => {
       imageUrl = `${req.protocol}://${req.get('host')}/images/${
         req.file.filename
       }`
-      if(filename === 'profil.jpg'){
-        User.updateOne(
-          { _id: req.params.id },
-          {
-            $set: { picture: imageUrl},
-          }
-        )
-          .then(() => {
-            User.findById({ _id: req.params.id })
-            .then((user) =>
-              res.status(200).json({ picture: user.picture })
-            )
-          })
-          .catch((err) => res.status(500).json({ msg: err }))
-
-      }
-      else{
-
+      if(filename !== 'profil.jpg'){
+        
         //On regarde s'il y a une image a traité puis on la supprime avec la méthode unlink de Fs  de notre dossier images
         fs.unlink(`images/${filename}`, (error) => {
           if (error) console.log({error:"Erreur de suppression de l'ancienne image"});
@@ -133,7 +117,7 @@ exports.updateUser = (req, res, next) => {
           }
         });
       }
-  
+      
     }
       User.updateOne(
         { _id: req.params.id },
