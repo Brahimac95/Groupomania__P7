@@ -7,8 +7,8 @@ import axios from 'axios';
 
 export default function Header() {
     
-    const userData = JSON.parse(localStorage.getItem("dataUser"))
-    const userId = userData.userId
+    const userDataLs = JSON.parse(localStorage.getItem("dataUser"))
+    const userId = userDataLs.userId
     // const userId = userData.userId
     // const  [firstName, setFirstName ] = useState("")
     // const  [lastName, setLastName ] = useState("")
@@ -75,7 +75,7 @@ export default function Header() {
                 <h3 >Apprenez à faire connaissance avec vos collègues</h3>
                 <nav className='btn-link'>
                     <ul className='liste'>
-                        <li className='lien-nav' onClick={logout}>Deconnexion</li>
+                        <li className='lien-nav' onClick={logout}>Déconnexion</li>
                         <li className='lien-nav' onClick={news}>Fil d'actualité</li>
                         <li className='lien-nav' onClick={myPosts}>Mes publications</li>
                         <li className='lien-nav' onClick={profil}>Profil</li>

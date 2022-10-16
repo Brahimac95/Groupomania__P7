@@ -10,8 +10,8 @@ export default function CardPost({post}) {
 
     const navigate = useNavigate();
 
-    const userData = JSON.parse(localStorage.getItem('dataUser'));
-    const userId = userData.userId ;
+    const userDataLs = JSON.parse(localStorage.getItem('dataUser'));
+    const userId = userDataLs.userId ;
     const [id, setId] = useState('');
     const [isAdmin, setIsAdmin] = useState(false);
     const [liked, setLiked] = useState(post.usersLiked.includes(userId));
@@ -26,7 +26,7 @@ export default function CardPost({post}) {
           url:`http://localhost:5000/api/auth/${userId}`,
           credentials: true,
           headers: {
-            'Authorization': `Bearer ${userData.token}`
+            'Authorization': `Bearer ${userDataLs.token}`
           },
           params: {
             userId
@@ -51,7 +51,7 @@ export default function CardPost({post}) {
     
     
     
-    }, [userData.token, userId]);
+    }, [userDataLs.token, userId]);
 
 
     //Fonction de Like
@@ -62,7 +62,7 @@ export default function CardPost({post}) {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${userData.token}`
+                'Authorization': `Bearer ${userDataLs.token}`
 
             },
             body: JSON.stringify({
@@ -90,7 +90,7 @@ export default function CardPost({post}) {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${userData.token}`
+                'Authorization': `Bearer ${userDataLs.token}`
 
             },
             body: JSON.stringify({
@@ -115,7 +115,6 @@ export default function CardPost({post}) {
 
     //Recupération des date renvoyé par MongoDb
     const datePaser = (num) => {
-        
         let options = {hour: "2-digit", minute: "2-digit" , day: "numeric",
         weekday: "long", year: "numeric", month: "short"}
        
@@ -123,7 +122,8 @@ export default function CardPost({post}) {
         let date = new Date(timestamp).toLocaleDateString('fr-FR' , options)
         return date.toString()
     }
-    // Redirection to modify product
+
+    // Redirection à la page updatePost
     const modifyPost = () => {
         navigate(`/post/${post._id}`);
     };
@@ -144,7 +144,7 @@ export default function CardPost({post}) {
         <img src={post.imageUrl}  className='card-img' alt='' />
         <p className='card-text'> {post.post}</p>
         <div className="card-footer">
-            {/*Lorsqu'un user ajouter un like*/}
+            {/*Lorsqu'un user ajouter un like en faison un shortCircuit Operator*/}
             {liked === true && (<img src={HeartPlein} className="fa-regular fa-heart like" onClick={unlike}/> )}
             {/* Lorsuq'un user annule son like */}
             {liked === false && (<img src={Heartvide}
@@ -158,7 +158,7 @@ export default function CardPost({post}) {
          
         </div>
 
-         {/*Lorsque le nombre de like*/}
+         {/*Lorsque le nombre de like */}
             {numberLike === 0 && (<p className="card-post-number-like">{numberLike} like </p>)}
             {/*Lorsque le nombre de like est egala à 1*/}
             {numberLike === 1 && (<p className="card-post-number-like">{numberLike} like </p>)}

@@ -7,10 +7,11 @@ import Send from "../assets/send.png"
 
 export default function CreatePost(props) {
 
-  const userData = JSON.parse(localStorage.getItem('dataUser'));
-  const userId = userData.userId;
+  const userDataLs = JSON.parse(localStorage.getItem('dataUser'));//On recupère les données de l'utilisateur dans le LS
+  const userId = userDataLs.userId;
+
+  //On initialise les States
   const [post, setPost] = useState('');
-  // const [lastName, setLastName] = useState('');
   const [firstName, setFirstName] = useState();
   const [id, setId] = useState('');
   
@@ -23,27 +24,28 @@ export default function CreatePost(props) {
     axios({
       method: "get", url: "http://localhost:5000/api/auth", credentials: true,
       headers: {
-        'Authorization': `Bearer ${userData.token}`
+        'Authorization': `Bearer ${userDataLs.token}`
       },
       params: {
         userId
       }
     })
     .then((res) => {
+      // console.log(res);
       // setLastName(res.data.lastName);
-      setFirstName(userData.firstName);
-      setId(userData._userId);
+      setFirstName(userDataLs.firstName);
+      setId(userDataLs._userId);
     })
     .catch((err) => {
       console.log(err);
     });
   
-  }, [userData, userId]);
+  }, [userDataLs.token, userId]);
 
   // Call API for create post
   const Post = (e) => {
     e.preventDefault();
-    console.log(post);
+    // console.log(post);
   
     if (post !== "") {
       //Le package qui contiendra tout les données qui seront envoyée à notre BDD
@@ -54,10 +56,10 @@ export default function CreatePost(props) {
       formData.append("post", post);
       formData.append("file", imgPostFile);
   
-      axios.post("http://localhost:5000/api/post", formData, {headers: {'Authorization': `Bearer ${userData.token}`}})
+      axios.post("http://localhost:5000/api/post", formData, {headers: {'Authorization': `Bearer ${userDataLs.token}`}})
       .then((res) => {
   
-        console.log(res);
+        // console.log(res);
         props.setPosts([...props.posts, res.data])
         //Réinitialisation tous nos éléments apres l'envoi
         setPost('')
@@ -88,7 +90,7 @@ export default function CreatePost(props) {
   return (
     <main className='container-reate-post'>
       <div className="create-post">
-        <form  onSubmit={(e) => Post(e)}>
+        <form  onSubmit={(e) => Post(e)} encType='multipart/form-data'>
           <div className="post-redaction">
             <textarea 
               aria-label='Champ pour ajouter le message de votre post' 

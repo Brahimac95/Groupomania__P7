@@ -7,12 +7,12 @@ import CardPost from "./CardPost";
 
 export default function PostList() {
     const [posts, setPosts] = useState([]);
-    const userData = JSON.parse(localStorage.getItem('dataUser'))
+    const userDataLs = JSON.parse(localStorage.getItem('dataUser'))
   
     useEffect(() => {
       axios.get('http://localhost:5000/api/post', {
         headers: {
-          'Authorization': `Bearear ${userData.token}`
+          'Authorization': `Bearear ${userDataLs.token}`
         }
       })
       .then((res) => {
@@ -23,7 +23,7 @@ export default function PostList() {
         console.error(error);
       })
   
-    }, [userData.token])
+    }, [userDataLs.token])
   
   
   
@@ -33,7 +33,7 @@ export default function PostList() {
           {/* <h1>PostList</h1> */}
           <CreatePost setPosts={setPosts} posts={posts}/>
           <section>
-            {/* On affiche les post de façon antechrologique */}
+            {/* On renoie notre tableau de post et on affiche les post de façon antechrologique */}
             {posts.slice().reverse().map((post) => (<CardPost key={post._id} post={post}/>))}
           </section>
         </div>

@@ -47,7 +47,7 @@ export default function UpdatePost() {
       console.log(err);
     })
 
-  }, [userDataLs.token, userId]);
+  }, [userDataLs.token, userId]);//On observe le token et l'id de l'utilisateur pour les autorisations
 
   //On cible que le post grâce à son identifiant
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function UpdatePost() {
     })
 
     .then(res => {
-      console.log(res)
+      // console.log(res)
       navigate('/')
   
     })

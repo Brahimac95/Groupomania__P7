@@ -7,15 +7,15 @@ import'../Styles/Pages/_home.scss'
 
 export default function MyPost() {
 
-  const userData = JSON.parse(localStorage.getItem("dataUser"))
-  const userId = userData.userId;
+  const userDataLs = JSON.parse(localStorage.getItem("dataUser"))
+  const userId = userDataLs.userId;
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
 
     axios.get('http://localhost:5000/api/post', {//On recupère tout les posts en ajoutant le token du l'utilisateur dans le header
       headers: {
-        'Authorization': `Bearer ${userData.token}`
+        'Authorization': `Bearer ${userDataLs.token}`
       }
 
     })
@@ -26,7 +26,7 @@ export default function MyPost() {
 
     })
 
-  }, [userData.token])
+  }, [userDataLs.token])
 
   //On cible les posts mais on affiche uniquement les post de l'utilisateur en question
   let userPost = posts.filter(post => {

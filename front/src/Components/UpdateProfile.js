@@ -11,9 +11,6 @@ export default function UpdateProfil() {
   const navigate = useNavigate();
   const [file, setFile] = useState("");
   const [profilImgInput, setProfilImgInput] = useState("");
-  // const [description, setDescription] = useState("")
-  // const[firstName, setFirstName] = useState("")
-  // const [lastName, setLastName] = useState("");
   const [userData, setUserData] = useState("")
   
   
@@ -29,7 +26,7 @@ export default function UpdateProfil() {
       }
     })
     .then((res) => {
-       console.log(res);
+      //  console.log(res);
       setUserData(res.data)
   
     })
@@ -45,7 +42,6 @@ export default function UpdateProfil() {
   
     const formData = new FormData()
     formData.append('file', file);
-    // formData.append('description', description);
   
     axios.put(`http://localhost:5000/api/auth/${userId}`, formData,
     {headers: {'Authorization': `Bearer ${userDataLs.token}`},
