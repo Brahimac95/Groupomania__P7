@@ -12,9 +12,9 @@ router.post('/login', userCtrl.login);
 
 
 //CRUD User
-router.get('/', userCtrl.getAllUsers)
+router.get('/',auth,  userCtrl.getAllUsers)
 router.get('/:id',auth , userCtrl.getOneUser)
 router.put('/:id', auth, multer, userCtrl.updateUser)
 router.delete('/:id', auth, userCtrl.deleteUser)
 
-module.exports = router;
+module.exports = router; 
