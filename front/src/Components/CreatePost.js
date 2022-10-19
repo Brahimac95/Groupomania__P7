@@ -42,13 +42,13 @@ export default function CreatePost(props) {
   
   }, [userDataLs.token, userId]);
 
-  // Call API for create post
+  // Création de Post
   const Post = (e) => {
     e.preventDefault();
     // console.log(post);
   
     if (post !== "") {
-      //Le package qui contiendra tout les données qui seront envoyée à notre BDD
+      //Le package qui contiendra toutes les données qui seront envoyée à notre BDD
       const formData = new FormData();
       formData.append("userId", userId);
       // formData.append("lastName", lastName);

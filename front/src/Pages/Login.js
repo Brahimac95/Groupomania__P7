@@ -61,7 +61,7 @@ export default function Login() {
         <form className="login-form">
           <h3>Se connecter</h3>
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email" 
+          <input type="email" name="email" id="email" 
             onChange={(e) => setEmail(e.target.value)} required value={email}
             placeholder='jean@gmail.com'
           />
